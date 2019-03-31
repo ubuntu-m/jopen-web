@@ -1,8 +1,8 @@
 package io.jopen.web.core.security.access;
 
-import io.maxfeng.framework.core.annotation.RateLimit;
-import io.maxfeng.framework.core.model.ErrorEnum;
-import io.maxfeng.framework.core.utils.WebUtils;
+import io.jopen.web.core.annotation.RateLimit;
+import io.jopen.web.core.model.ErrorEnum;
+import io.jopen.web.core.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
@@ -16,7 +16,8 @@ import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.List;
 
-import static io.maxfeng.framework.core.model.ResponseModel.error;
+import static io.jopen.web.core.model.ResponseModel.error;
+
 
 /**
  * 描述： 对接口访问增加流量控制
