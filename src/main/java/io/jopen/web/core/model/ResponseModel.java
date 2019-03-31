@@ -4,9 +4,13 @@ package io.jopen.web.core.model;
  * response model
  */
 public class ResponseModel {
-    int code;
-    String message;
-    boolean success = false;
+
+    private int code;
+
+    private String message;
+
+    private boolean success = false;
+
     private Object data;
 
 

@@ -1,7 +1,7 @@
 package io.jopen.web.config.redis.pool;
 
 import io.jopen.web.config.redis.RedisPool;
-import io.jopen.web.core.context.ProjectHolder;
+import io.jopen.web.core.context.SpringContextHolder;
 import org.springframework.core.env.Environment;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -61,7 +61,7 @@ public class RedisSinglePool implements RedisPool {
     }
 
     private static void init() {
-        env = ProjectHolder.getBean(Environment.class);
+        env = SpringContextHolder.getBean(Environment.class);
         maxTotal = Integer.parseInt(Objects.requireNonNull(env.getProperty("spring.redis.pool.max-total")));
 
         maxIdle = Integer.parseInt(Objects.requireNonNull(env.getProperty("spring.redis.pool.max-idle")));

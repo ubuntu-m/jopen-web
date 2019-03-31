@@ -1,6 +1,6 @@
 package io.jopen.web.config.elasticsearch;
 
-import io.jopen.web.core.context.ProjectHolder;
+import io.jopen.web.core.context.SpringContextHolder;
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequestBuilder;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
@@ -23,7 +23,7 @@ import java.util.Map;
  */
 public class ElasticsearchUtils {
 
-    private static TransportClient client = ProjectHolder.getBean(TransportClient.class);
+    private static TransportClient client = SpringContextHolder.getBean(TransportClient.class);
 
     /**
      * 创建索引

@@ -6,12 +6,9 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
- * 描述：
- * 作者：MaXFeng
- * 时间：2018/10/1
  */
 @Component
-public class ProjectHolder implements ApplicationContextAware {
+public class SpringContextHolder implements ApplicationContextAware {
 
     private static ApplicationContext applicationHolder;
 

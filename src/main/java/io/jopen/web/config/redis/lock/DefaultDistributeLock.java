@@ -1,7 +1,7 @@
 package io.jopen.web.config.redis.lock;
 
 import io.jopen.web.config.redis.RedisPoolUtil;
-import io.jopen.web.core.context.ProjectHolder;
+import io.jopen.web.core.context.SpringContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
@@ -48,7 +48,7 @@ public class DefaultDistributeLock implements DistributedLock {
     @Override
     public boolean lock(String lockName) {
 
-        Environment env = ProjectHolder.getBean(Environment.class);
+        Environment env = SpringContextHolder.getBean(Environment.class);
         /**1.使用setNx开始加锁*/
         log.info("开始获取Redis分布式锁流程,lockName={},CurrentThreadName={}", lockName, Thread.currentThread().getName());
         long lockTimeout = Long.parseLong(Objects.requireNonNull(env.getProperty("spring.redis.timeout")));

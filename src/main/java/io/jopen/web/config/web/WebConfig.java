@@ -1,16 +1,12 @@
 package io.jopen.web.config.web;
 
-import io.maxfeng.framework.core.security.access.APISignInterceptor;
-import io.maxfeng.framework.core.security.access.RateLimitInterceptor;
+import io.jopen.web.core.security.access.APISignInterceptor;
+import io.jopen.web.core.security.access.RateLimitInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-/**
- * 作者：MaXFeng
- * 时间：#{DATE}
- */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
