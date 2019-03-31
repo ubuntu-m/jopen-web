@@ -1,0 +1,8 @@
+redisson:
+  like:
+    collection1: post_set
+    lock: post_set_lock
+    collection2: post_user_like_set_
+    collection3: post_user_like_
+    colelction4: post_counter_
+    collection5: post_user_like_collection

@@ -1,0 +1,46 @@
+#加密相关参数
+security:
+  common:
+    appKey: boot-key
+    appSecret: boot-secret
+    accessExpire: 100000000
+
+spring:
+  #mongodb配置
+  data:
+    mongodb:
+      uri: mongodb://192.168.182.134:27017
+      database: ubuntu
+  #redis配置
+  redis:
+    address: redis://192.168.182.130:6379  #这个地方是为满足redisson的需求
+    host: 192.168.182.130
+    database: 0
+    password: 121101mxf
+    port: 6379
+    timeout: 1000
+    pool:
+      max-total: 100
+      max-active: 100
+      max-idle: 100
+      max-wait: -1
+      min-idle: 12
+      borrow: true
+      return: true
+
+
+
+
+#ElasticSearch配置
+elasticsearch:
+  cluster:
+    name: ubuntu
+  host: 192.168.182.130
+  port: 9300
+  pool: 5
+
+
+#mongodb配置
+
+
+
