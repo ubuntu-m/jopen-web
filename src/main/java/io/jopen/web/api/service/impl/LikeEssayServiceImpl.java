@@ -1,6 +1,5 @@
 package io.jopen.web.api.service.impl;
 
-import com.alibaba.fastjson.JSON;
 import io.jopen.web.api.service.LikeEssayService;
 import io.jopen.web.core.model.ErrorEnum;
 import io.jopen.web.core.model.LikeModel;
