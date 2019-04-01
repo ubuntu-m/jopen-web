@@ -7,9 +7,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 描述：
- * 作者：MaXFeng
- * 时间：2018/10/3
  */
 @Document(collection = "ubuntu")
 public class MongoDBModel implements Serializable {

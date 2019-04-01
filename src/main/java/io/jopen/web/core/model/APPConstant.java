@@ -1,9 +1,6 @@
 package io.jopen.web.core.model;
 
 /**
- * 描述：
- * 作者：MaXueFeng
- * 时间：2018-08-15
  */
 public class APPConstant {
 

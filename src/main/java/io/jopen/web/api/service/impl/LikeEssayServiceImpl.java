@@ -1,5 +1,6 @@
 package io.jopen.web.api.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import io.jopen.web.api.service.LikeEssayService;
 import io.jopen.web.core.model.ErrorEnum;
 import io.jopen.web.core.model.LikeModel;
@@ -17,9 +18,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 描述：
- * 作者：MaXFeng
- * 时间：2018/10/2
+ *
  */
 @Service
 public class LikeEssayServiceImpl implements LikeEssayService {
@@ -70,9 +69,8 @@ public class LikeEssayServiceImpl implements LikeEssayService {
      */
     @Override
     public ResponseModel like(Integer uid, Integer aid) {
+
         /**
-         *
-         *
          * 1：判断当前文章是否被点过赞
          * 2：判断当前用户是否点赞过当前文章  ->{
          *                                 1:点过赞  不重复计算
@@ -91,22 +89,22 @@ public class LikeEssayServiceImpl implements LikeEssayService {
                 //重复点赞后端不做计算   或者是再次点赞可以认为是用户取消点赞
 
             } else {
+
+                //
                 userSet.add(uid);
                 String likeModelHash = this.post_user_like_ + aid + "_" + uid;
+
+                //
                 LikeModel likeModel = new LikeModel();
                 likeModel.setAid(aid);
                 likeModel.setUid(uid);
                 likeModel.setCreateTime(new Date());
-                /**
-                 * 存放到redis中
-                 * 可以将当前数据存放到本地的内存中
-                 * post_user_collection_entity 属于外部key
-                 */
+
+                // post_user_collection_entity 属于外部key
                 RLocalCachedMap<String, Object> localCachedMap = client.getLocalCachedMap(this.post_user_collection_entity, LocalCachedMapOptions.defaults());
                 localCachedMap.put(likeModelHash, likeModel);
-                /**
-                 * 对当前文章维护一个计数器
-                 */
+
+                // 对当前文章维护一个计数器
                 String essayLikeCount = this.post_counter_ + aid;
                 RAtomicLong atomicLong = client.getAtomicLong(essayLikeCount);
                 atomicLong.incrementAndGet();
@@ -115,11 +113,11 @@ public class LikeEssayServiceImpl implements LikeEssayService {
         } else {
             RLock lock = client.getLock(this.post_set_lock);
             try {
-                /**
-                 * 这个地方需要注意的是分布式锁的问题
-                 * 多个线程操作同一个Set会出现并发问题
-                 */
+
+                // 这个地方需要注意的是分布式锁的问题  多个线程操作同一个Set会出现并发问题
                 boolean tryLock = lock.tryLock(2, 1, TimeUnit.MILLISECONDS);
+
+                //
                 if (tryLock) {
                     set.add(aid);
                     String userSetName = this.post_user_like_set_ + aid;
@@ -130,15 +128,12 @@ public class LikeEssayServiceImpl implements LikeEssayService {
                     likeModel.setAid(aid);
                     likeModel.setUid(uid);
                     likeModel.setCreateTime(new Date());
-                    /**
-                     * 存放到redis中
-                     * 可以将当前数据存放到本地的内存中
-                     */
+
+                    //
                     RLocalCachedMap<String, Object> localCachedMap = client.getLocalCachedMap(this.post_user_collection_entity, LocalCachedMapOptions.defaults());
                     localCachedMap.put(likeModelHash, likeModel);
-                    /**
-                     * 对当前文章维护一个计数器
-                     */
+
+                    // 对当前文章维护一个计数器
                     String essayLikeCount = this.post_counter_ + aid;
                     RAtomicLong atomicLong = client.getAtomicLong(essayLikeCount);
                     atomicLong.incrementAndGet();
@@ -156,13 +151,15 @@ public class LikeEssayServiceImpl implements LikeEssayService {
 
     @Override
     public ResponseModel getLike(Integer aid) {
-        /**
-         * 获取文章点赞数据
-         */
+
+        // 获取文章点赞数据
         Map<String, Object> info = new HashMap<>();
         RSet<Integer> set = client.getSet(post_set);
+
+        //
         if (set.contains(aid)) {
             String userSetName = this.post_user_like_set_ + aid;
+
             //存放的是用户ID
             RSet<Integer> userSet = this.client.getSet(userSetName);
             RLocalCachedMap<String, Object> localCachedMap = client.getLocalCachedMap(this.post_user_collection_entity, LocalCachedMapOptions.defaults());

@@ -1,9 +1,8 @@
 package io.jopen.web.core.security.access;
 
-
-import io.maxfeng.framework.core.model.ErrorEnum;
-import io.maxfeng.framework.core.utils.MD5Util;
-import io.maxfeng.framework.core.utils.WebUtils;
+import io.jopen.core.common.util.MD5Util;
+import io.jopen.web.core.model.ErrorEnum;
+import io.jopen.web.core.utils.WebUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -15,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import static io.maxfeng.framework.core.model.ResponseModel.error;
+import static io.jopen.web.core.model.ResponseModel.error;
 
 
 /**
