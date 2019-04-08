@@ -1,6 +1,6 @@
 package io.jopen.web.core.security.access;
 
-import io.jopen.core.common.util.MD5Util;
+import io.jopen.core.common.MD5Util;
 import io.jopen.web.core.model.ErrorEnum;
 import io.jopen.web.core.utils.WebUtils;
 import org.apache.commons.lang3.StringUtils;

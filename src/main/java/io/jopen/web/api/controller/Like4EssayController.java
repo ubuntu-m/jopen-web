@@ -1,8 +1,8 @@
 package io.jopen.web.api.controller;
 
-import io.maxfeng.framework.api.service.LikeEssayService;
-import io.maxfeng.framework.core.annotation.RateLimit;
-import io.maxfeng.framework.core.model.ResponseModel;
+import io.jopen.web.api.service.LikeEssayService;
+import io.jopen.web.core.annotation.RateLimit;
+import io.jopen.web.core.model.ResponseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
